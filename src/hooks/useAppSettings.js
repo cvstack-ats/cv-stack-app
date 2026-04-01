@@ -1,35 +1,30 @@
-useAppSettings.js
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabase";
 
 export function useAppSettings() {
   const [settings, setSettings] = useState(null);
-  const [branding, setBranding] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    async function loadSettings() {
-      try {
-        const [{ data: settingsRows }, { data: brandingRows }] = await Promise.all([
-          supabase.from("app_settings").select("*").limit(1),
-          supabase.from("branding_settings").select("*").limit(1),
-        ]);
+  async function loadSettings() {
+    setLoading(true);
+    const { data, error } = await supabase
+      .from("app_settings")
+      .select("*")
+      .limit(1)
+      .maybeSingle();
 
-        setSettings(settingsRows?.[0] || null);
-        setBranding(brandingRows?.[0] || null);
-      } finally {
-        setLoading(false);
-      }
+    if (error) {
+      console.error("Settings load error:", error);
+    } else {
+      setSettings(data || null);
     }
 
+    setLoading(false);
+  }
+
+  useEffect(() => {
     loadSettings();
   }, []);
 
-  return {
-    settings,
-    branding,
-    loading,
-    setSettings,
-    setBranding,
-  };
+  return { settings, setSettings, loadSettings, loading };
 }

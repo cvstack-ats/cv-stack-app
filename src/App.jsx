@@ -12,6 +12,7 @@ import AdminLoginPage from "./pages/AdminLoginPage";
 import AdminDashboardPage from "./pages/AdminDashboardPage";
 import.meta.env.VITE_SUPABASE_URL
 import.meta.env.VITE_SUPABASE_ANON_KEY
+import TopRightLogo from "./components/common/TopRightLogo";
 import { supabase } from "./lib/supabase";
 
 export default function App() {
@@ -87,6 +88,7 @@ export default function App() {
     setReferralMessage("Referral code applied");
     goTo("payment");
   }
+  <TopRightLogo onClickHome={() => goTo("home")} />
 
   async function handleSaveOrder() {
     try {
@@ -319,3 +321,4 @@ Please proceed with my CV.`;
     </>
   );
 }
+

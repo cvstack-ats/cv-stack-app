@@ -1238,3 +1238,38 @@ select.field-input {
     grid-template-columns: 1fr;
   }
 }
+
+.top-right-logo-btn {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 999;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.top-right-logo-img {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+  border-radius: 50%;
+  border: 1px solid rgba(145, 160, 255, 0.18);
+  background: rgba(9, 12, 26, 0.8);
+  padding: 6px;
+}
+
+.top-right-logo-text {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 58px;
+  height: 58px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: rgba(9, 12, 26, 0.88);
+  border: 1px solid rgba(145, 160, 255, 0.18);
+  color: white;
+  font-weight: 700;
+}
