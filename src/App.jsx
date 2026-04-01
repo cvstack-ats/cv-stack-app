@@ -10,7 +10,8 @@ import CircleLoginPage from "./pages/CircleLoginPage";
 import CircleDashboardPage from "./pages/CircleDashboardPage";
 import AdminLoginPage from "./pages/AdminLoginPage";
 import AdminDashboardPage from "./pages/AdminDashboardPage";
-
+import.meta.env.VITE_SUPABASE_URL
+import.meta.env.VITE_SUPABASE_ANON_KEY
 import { supabase } from "./lib/supabase";
 
 export default function App() {
